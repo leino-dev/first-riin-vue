@@ -11,7 +11,13 @@ export default{
       isShow: true,
       count: 0,
       hoge: "mofumofu",
-      isDisabled: true
+      isDisabled: true,
+      pages: {
+        "/": "Home",
+        "/about": "About",
+        "/mofu": "もふもふ",
+        "/line": "リスト"
+      }
     }
   },
   methods: {
@@ -66,9 +72,7 @@ export default{
     </div>
 
       <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-        <RouterLink to="/mofu">もふもふ</RouterLink>
+        <RouterLink v-for="(item, key) in pages" :key="item" :to="key">{{ item }}</RouterLink>
       </nav>
     </div>
   </header>
