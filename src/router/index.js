@@ -21,6 +21,11 @@ const router = createRouter({
       path: '/mofu',
       name: 'mofu',
       component: () => import('../views/MofuView.vue')
+    },
+    {
+      path: '/line',
+      name: 'line',
+      component: () => import('../views/LineView.vue')
     }
   ]
 })
