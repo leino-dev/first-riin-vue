@@ -22,9 +22,15 @@ export default{
     }
   },
   methods: {
-    incremenet() {
+    increment() {
       // ここで変数を触る場合は、thisが必要
       this.count++
+    },
+    decrement() {
+      this.decrement_()
+    },
+    decrement_() {
+      this.count--
     }
   },
   computed: {
@@ -64,8 +70,9 @@ export default{
       <div>
         <!-- countを表示する -->
         うさぎが{{ count }}羽
-        <!-- methodのincremenetを実行する -->
-        <button @click="incremenet">+1</button>
+        <!-- methodのincrementを実行する -->
+        <button @click="increment">+1</button>
+        <button @mouseover="decrement">-1</button>
       </div>
 
       <!-- computedのdouble()を実行した結果を表示する -->
