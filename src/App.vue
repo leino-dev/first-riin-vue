@@ -17,7 +17,8 @@ export default{
         "/about": "About",
         "/mofu": "もふもふ",
         "/line": "リスト"
-      }
+      },
+      visible: false
     }
   },
   methods: {
@@ -69,6 +70,10 @@ export default{
 
       <!-- computedのdouble()を実行した結果を表示する -->
       <div>ハムスターが{{ double }}匹</div>
+
+      <!-- 各イベントを契機にjavascriptを実行、thisは省略 -->
+      <button @mouseenter="visible = true" @mouseleave="visible = false">ひみつ</button>
+      <div v-if="visible">クラスのみんなには内緒だよ</div>
     </div>
 
       <nav>
