@@ -22,15 +22,22 @@ export default{
     }
   },
   methods: {
-    increment() {
+    increment(num = 1) {
       // ここで変数を触る場合は、thisが必要
-      this.count++
+      this.count = this.count + num
     },
-    decrement() {
-      this.decrement_()
+    decrement(num = 1) {
+      this.decrement_(num)
     },
-    decrement_() {
-      this.count--
+    decrement_(num) {
+      if (typeof num != 'number') {
+        return
+      }
+      this.count = this.count - num
+    },
+    eventOut(event) {
+      console.log(event)
+      console.log(event.type)
     }
   },
   computed: {
@@ -68,11 +75,20 @@ export default{
       <div :class="hoge">もふん</div>
 
       <div>
+        <!-- ()なしで呼び出すとイベントが引数になる -->
+        <!-- 明示的にイベントを渡したい場合$eventを渡す -->
+        <button  @click="eventOut" @mouseover="eventOut($event)" @mouseleave="eventOut">event log</button>
+      </div>
+      <div>
         <!-- countを表示する -->
         うさぎが{{ count }}羽
+
         <!-- methodのincrementを実行する -->
-        <button @click="increment">+1</button>
-        <button @mouseover="decrement">-1</button>
+        <!-- ()を漬けるとundefinedが引数になる -->
+        <button @click="increment()">+1</button>
+        <button @click="increment(6)">+6</button>
+        <button @mouseover="decrement()">-1</button>
+        <button @mouseover="decrement(6)">-6</button>
       </div>
 
       <!-- computedのdouble()を実行した結果を表示する -->
